@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="A student wellbeing score estimator powered by machine learning."
+    />
+    <title>MindMetric | Student Wellbeing Estimator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Playfair+Display:opsz,wght@5..120,600;5..120,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="page-shell">
+      <section class="intro" aria-labelledby="page-title">
+        <a class="brand" href="#top" aria-label="MindMetric home">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M5 12h2.3l1.7-4.5 3.1 9 1.9-5H19" />
+              <path d="M3 12a9 9 0 1 1 18 0" opacity=".55" />
+            </svg>
+          </span>
+          MindMetric
+        </a>
+
+        <div class="intro-copy">
+          <h1 id="page-title">Make space for a clearer picture.</h1>
+          <p class="lede">
+            Share a few details about daily routines and social media habits to receive an estimated mental health score.
+          </p>
+        </div>
+
+        <div class="privacy-note">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
+            <rect x="5" y="10" width="14" height="10" rx="2" />
+            <path d="M8 10V7a4 4 0 0 1 8 0v3" />
+          </svg>
+          <p>Your details are used only to create this prediction.</p>
+        </div>
+      </section>
+
+      <section class="assessment" id="top" aria-label="Wellbeing assessment">
+        <div class="assessment-header">
+          <div>
+            <p class="section-label">Your profile</p>
+            <h2>Tell us about a typical day</h2>
+          </div>
+          <p class="required-note"><span aria-hidden="true">*</span> Required fields</p>
+        </div>
+
+        <form id="prediction-form" novalidate>
+          <fieldset>
+            <legend>Personal details</legend>
+            <div class="form-grid details-grid">
+              <label>
+                Age <span aria-hidden="true">*</span>
+                <input type="number" name="age" min="18" max="24" value="20" required />
+              </label>
+              <label>
+                Gender <span aria-hidden="true">*</span>
+                <select name="gender" required>
+                  <option value="" disabled>Select gender</option>
+                  <option value="Female">Female</option>
+                  <option value="Male" selected>Male</option>
+                </select>
+              </label>
+              <label class="wide-field">
+                Country <span aria-hidden="true">*</span>
+                <select name="country" required>
+                  <option value="India" selected>India</option>
+                  <option value="USA">USA</option>
+                  <option value="Canada">Canada</option>
+                  <option value="Australia">Australia</option>
+                  <option value="UK">UK</option>
+                  <option value="Germany">Germany</option>
+                  <option value="Mexico">Mexico</option>
+                  <option value="Turkey">Turkey</option>
+                  <option value="France">France</option>
+                  <option value="Other">Other countries</option>
+                </select>
+              </label>
+              <label>
+                Academic level <span aria-hidden="true">*</span>
+                <select name="academic_level" required>
+                  <option value="" disabled>Select level</option>
+                  <option value="High School">High School</option>
+                  <option value="Undergraduate" selected>Undergraduate</option>
+                  <option value="Graduate">Graduate</option>
+                </select>
+              </label>
+              <label>
+                Stress level <span aria-hidden="true">*</span>
+                <select name="stress_level" required>
+                  <option value="" disabled>Select level</option>
+                  <option value="Low">Low</option>
+                  <option value="Medium" selected>Medium</option>
+                  <option value="High">High</option>
+                  <option value="Very High">Very High</option>
+                </select>
+              </label>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Social media habits</legend>
+            <div class="form-grid">
+              <label>
+                Most-used platform <span aria-hidden="true">*</span>
+                <select name="most_used_platform" required>
+                  <option value="" disabled>Select platform</option>
+                  <option value="Facebook">Facebook</option>
+                  <option value="LinkedIn">LinkedIn</option>
+                  <option value="Instagram" selected>Instagram</option>
+                  <option value="Snapchat">Snapchat</option>
+                  <option value="Twitter">Twitter</option>
+                  <option value="YouTube">YouTube</option>
+                  <option value="TikTok">TikTok</option>
+                  <option value="LINE">LINE</option>
+                  <option value="KakaoTalk">KakaoTalk</option>
+                  <option value="VKontakte">VKontakte</option>
+                  <option value="WhatsApp">WhatsApp</option>
+                  <option value="WeChat">WeChat</option>
+                </select>
+              </label>
+              <label>
+                Primary purpose <span aria-hidden="true">*</span>
+                <select name="purpose_of_use" required>
+                  <option value="" disabled>Select purpose</option>
+                  <option value="Networking">Networking</option>
+                  <option value="Education" selected>Education</option>
+                  <option value="Entertainment">Entertainment</option>
+                  <option value="News">News</option>
+                </select>
+              </label>
+              <label>
+                Average daily usage <span aria-hidden="true">*</span>
+                <span class="input-with-unit">
+                  <input type="number" name="avg_daily_usage_hours" min="1" max="8.8" step="0.1" value="6" required />
+                  <span>hours</span>
+                </span>
+              </label>
+              <label>
+                Daily phone unlocks <span aria-hidden="true">*</span>
+                <input type="number" name="daily_unlocks" min="1" max="273" value="171" required />
+              </label>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Daily balance</legend>
+            <div class="form-grid balance-grid">
+              <label>
+                Study time <span aria-hidden="true">*</span>
+                <span class="input-with-unit">
+                  <input type="number" name="study_hours" min="0.3" max="8.3" step="0.1" value="4" required />
+                  <span>hours</span>
+                </span>
+              </label>
+              <label>
+                Physical activity <span aria-hidden="true">*</span>
+                <span class="input-with-unit">
+                  <input type="number" name="physical_activity_hours" min="0" max="4.1" step="0.1" value="1" required />
+                  <span>hours</span>
+                </span>
+              </label>
+              <label>
+                Sleep per night <span aria-hidden="true">*</span>
+                <span class="input-with-unit">
+                  <input type="number" name="sleep_hours_per_night" min="3.6" max="9.9" step="0.1" value="7" required />
+                  <span>hours</span>
+                </span>
+              </label>
+            </div>
+          </fieldset>
+
+          <p id="form-error" class="form-error" role="alert" hidden></p>
+          <button class="predict-button" type="submit">
+            <span class="button-text">Estimate my score</span>
+            <span class="button-spinner" aria-hidden="true"></span>
+            <svg class="button-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+              <path d="M5 12h13M13 7l5 5-5 5" />
+            </svg>
+          </button>
+        </form>
+
+        <section id="result-card" class="result-card" aria-live="polite" hidden>
+          <p>Your estimated mental health score</p>
+          <div class="score-line">
+            <strong id="score-value">0</strong><span>/10</span>
+          </div>
+          <div class="score-meter-wrap">
+            <meter id="score-meter" min="0" max="10" low="5" high="7" optimum="10" value="0">0 out of 10</meter>
+            <div class="score-meter-scale" aria-hidden="true"><span>0</span><span>5</span><span>10</span></div>
+          </div>
+          <p id="score-message" class="score-message"></p>
+          <button class="reset-button" id="new-assessment" type="button">Start a new assessment</button>
+        </section>
+      </section>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
